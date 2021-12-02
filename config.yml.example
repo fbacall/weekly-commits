@@ -1,0 +1,5 @@
+user: # Your github user name. eg. cooldude99
+token: # Your generated token (from: https://github.com/settings/tokens). Requires all "repo" scopes. eg. ghp_123456789...
+emails: # Any email addresses used for your git commits 
+#  - cool.dude99@example.com
+#  - cooldude@example.com
