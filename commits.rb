@@ -2,14 +2,16 @@
 
 require 'open-uri'
 require 'json'
+require 'yaml'
+
 unless File.exist?('config.yml')
   STDERR.puts "config.yml missing! Please copy config.yml.example"
   exit(1)
 end
-config = YAML.load('config.yml')
+config = YAML.load(File.read('config.yml'))
 USER = config['user']
 TOKEN = config['token']
-EMAILS = config['emails'].map(&:downcase)
+EMAILS = (config['emails'] || []).map(&:downcase)
 
 def fetch_events(page)
   json = open("https://api.github.com/users/#{USER}/events?page=#{page}", 'Authorization' => "token #{TOKEN}").read
