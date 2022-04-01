@@ -16,7 +16,7 @@ TOKEN = config['token']
 EMAILS = (config['emails'] || []).map(&:downcase)
 
 def fetch_events(page)
-  json = open("https://api.github.com/users/#{USER}/events?page=#{page}", 'Authorization' => "token #{TOKEN}").read
+  json = URI.open("https://api.github.com/users/#{USER}/events?page=#{page}", 'Authorization' => "token #{TOKEN}").read
   JSON.parse(json)  
 end
 
